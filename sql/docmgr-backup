@@ -1,0 +1,35 @@
+#!/bin/bash
+
+fname=docmgr-backup-`date +"%Y-%m-%d"`
+
+echo '---- deleted_ids ----' > $fname
+psql docmgr -c 'COPY deleted_ids TO stdout' >> $fname
+echo >> $fname
+
+echo '---- doc_data ----' >> $fname
+psql docmgr -c 'COPY doc_data TO stdout' >> $fname
+echo >> $fname
+
+echo '---- doc_fields ----' >> $fname
+psql docmgr -c 'COPY doc_fields TO stdout' >> $fname
+echo >> $fname
+
+echo '---- doc_types ----' >> $fname
+psql docmgr -c 'COPY doc_types TO stdout' >> $fname
+echo >> $fname
+
+echo '---- documents ----' >> $fname
+psql docmgr -c 'COPY documents TO stdout' >> $fname
+echo >> $fname
+
+echo '---- field_types ----' >> $fname
+psql docmgr -c 'COPY field_types TO stdout' >> $fname
+echo >> $fname
+
+echo '---- journal_abbrevs ----' >> $fname
+psql docmgr -c 'COPY journal_abbrevs TO stdout' >> $fname
+echo >> $fname
+
+gzip $fname
+
+echo "Backup is ${fname}.gz"

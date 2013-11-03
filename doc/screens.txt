@@ -1,0 +1,270 @@
+                        DocMgr SCREEN LAYOUTS
+                        =====================
+
+MAIN SCREEN
+===========
+
++================================================================================+
+I Document filter: n/a                                               322 entries I
+I +-------^+ +-----------------------------------------------------------------+ I
+I | 000101 | | ID: 0000107                                                EP/R | I
+I | 000102 | +-----------------------------------------------------------------+ I
+I | 000103 | | Author:   A. Sterl, W. Hazeleger_______________________________ | I
+I | 000104 | | Year:     2003                                                  | I
+I | 000105 | | Month:    ___________                                           | I
+I | 000106 | | Title:    Coupled variability and air-sea interaction in the {S | I
+I |>000107 | |           }outh {A}tlantic {O}cean_____________________________ | I
+I | 000108 | | Journal:  Clim. Dyn.___________________________________________ | I
+I | 000109 | | Volume:   21____________                                        | I
+I | 000110 | | Number:   7-8___________                                        | I
+I | 000111 | | Pages:    559-571_______                                        | I
+I | 000112 | | Language: __________________                                    | I
+I | 000113 | | URL:      _____________________________________________________ | I
+I | 000114 | | E-Print:  _____________________________________________________ | I
+I | 000115 | | Keywords: _____________________________________________________ | I
+I | 000116 | | Note:     _____________________________________________________ | I
+I | 000117 | |                                                                 | I
+I | 000118 | |                                                                 | I
+I | 000119X| |                                                                 | I
+I | 000120X| |                                                                 | I
+I | 000121 | |                                                                 | I
+I +-------v+ +-----------------------------------------------------------------+ I
+I      Add  Edit  Delete  quickSearch  Filters  Import  Options  Quit  Help      I
++================================================================================+
+
+Row 1: Name of currently active document filter displayed here
+       (e.g. "#1: Peter Cox articles"); special for no active filter
+       ("n/a") and QuickSearch filter ("QuickSearch").
+
+ID list: Entries passed by current document filter only are displayed.
+         Deleted entries will be displayed only if the "Display
+         deleted" option is checked on the options screen.  Deleted
+         entries are displayed in red.  The currently visible entry is
+         highlighted using reverse video.  'v' and '^' marks at the
+         bottom and top indicated scrollability.
+
+Article view: Some fields are fixed width, while others expand to
+              accommodate whatever you type in them, adding lines as
+              required (and so pushing down fields below).  If the
+              form gets bigger than the available space, scroll
+              markers are added ('v', '^').
+
+Navigation:
+
+ - Alt+letter selects entries from the bottom line menu.
+ - Previous/next entry in the ID list: Up, Down.
+ - Page up/down in ID list: PgUp, PgDn.
+ - Alt+E switches to edit mode, where navigation is active within the
+   article form.  ID list navigation is then inactive, and the article
+   header is marked with "(EDITING)".  In editing mode, the bottom
+   line menu changes to contain the entries Save edit and Cancel
+   edit.
+ - Motion in field form: Tab/Shift+Tab for next, previous field;
+   Ctrl+Left, Ctrl+Right for next/previous word; Left, Right for
+   normal cursor motion (also for selection in holding and status
+   fields).
+
+
+EDITING SCREEN
+==============
+
+Alt-E moves to edit mode, where the article record fields on the right
+hand side of the screen can be navigated around and modified.
+
++================================================================================+
+I Document filter: n/a                                               322 entries I
+I +-------^+ +-----------------------------------------------------------------+ I
+I | 000101 | | ID: 0000107   (EDITING)                                    EP/! | I
+I | 000102 | +-----------------------------------------------------------------+ I
+I | 000103 | | Author:   A. Sterl, W. Hazeleger_______________________________ | I
+I | 000104 | | Year:     2003                                                  | I
+I | 000105 | | Month:    ___________                                           | I
+I | 000106 | | Title:    Coupled variability and air-sea interaction in the {S | I
+I |>000107 | |           }outh {A}tlantic {O}cean_____________________________ | I
+I | 000108 | | Journal:  Clim. Dyn.___________________________________________ | I
+I | 000109 | | Volume:   21____________                                        | I
+I | 000110 | | Number:   7-8___________                                        | I
+I | 000111 | | Pages:    559-571_______                                        | I
+I | 000112 | | Language: __________________                                    | I
+I | 000113 | | URL:      _____________________________________________________ | I
+I | 000114 | | E-Print:  _____________________________________________________ | I
+I | 000115 | | Keywords: _____________________________________________________ | I
+I | 000116 | | Note:     Here is some text being added to the notes field.  Yo | I
+I | 000117 | |           u can also see that the article status has been modif | I
+I | 000118 | |           ied from above.______________________________________ | I
+I | 000119X| |                                                                 | I
+I | 000120X| |                                                                 | I
+I | 000121 | |                                                                 | I
+I +-------v+ +-----------------------------------------------------------------+ I
+I                   Save edit                      Cancel edit                   I
++================================================================================+
+
+In edit mode, the bottom line menu contains only "Save edit" and
+"Cancel edit" (accessed via Alt-S and Alt-C).  Either of these options
+returns to the main screen, either saving the changes to the entry or
+abandoning the edit.
+
+
+QUICK SEARCH
+============
+
+Alt-S pops up the Quick Search dialogue, where search terms can be
+entered.  Hitting return filters the records according to the search
+(which matches the search string against the author, editor, title,
+book title, journal and keywords fields).
+
++================================================================================+
+I Document filter: n/a                                               322 entries I
+I +-------^+ +-----------------------------------------------------------------+ I
+I | 000101 | | ID: 0000107                                                EP/R | I
+I | 000102 | +-----------------------------------------------------------------+ I
+I | 000103 | | Author:   A. Sterl, W. Hazeleger_______________________________ | I
+I | 000104 | | Year:     2003                                                  | I
+I | 000105 | | Month:    ___________                                           | I
+I | 000106 | | Title:    Coupled variability and air-sea interaction in the {S | I
+I |>000107 | |           }outh {A}tlantic {O}cean_____________________________ | I
+I | 000108                                                                 ___ | I
+I | 000109 +-QUICK-SEARCH-------------------------------------------------+    | I
+I | 000110 |                                                              |    | I
+I | 000111 | Search terms typed here...__________________________________ |    | I
+I | 000112 |                                                              |    | I
+I | 000113 +--------------------------------------------------------------+ __ | I
+I | 000114                                                                  __ | I
+I | 000115 | | Keywords: _____________________________________________________ | I
+I | 000116 | | Note:     _____________________________________________________ | I
+I | 000117 | |                                                                 | I
+I | 000118 | |                                                                 | I
+I | 000119X| |                                                                 | I
+I | 000120X| |                                                                 | I
+I | 000121 | |                                                                 | I
+I +-------v+ +-----------------------------------------------------------------+ I
+I      Add  Edit  Delete  quickSearch  Filters  Import  Options  Quit  Help      I
++================================================================================+
+
+Here, Enter activates the search, Escape dismisses the dialogue
+without changing the filter status.  When the dialogue initially
+appears, the last quick search term is available in the text entry
+field (and is highlighted).  Hitting anything other than a cursor key
+or Enter deletes the old term to allow a new one to be typed.  Enter
+reuses the old search term as is, and cursor keys un-highlight the
+text to allow it to be edited.
+
++================================================================================+
+I Document filter: QS "some search terms"                             12 entries I
+I +--------+ +-----------------------------------------------------------------+ I
+I | 000051 | | ID: 0000107                                                EP/R | I
+I | 000052 | +-----------------------------------------------------------------+ I
+I | 000060 | | Author:   A. Sterl, W. Hazeleger_______________________________ | I
+I | 000084 | | Year:     2003                                                  | I
+I | 000095 | | Month:    ___________                                           | I
+I | 000106 | | Title:    Coupled variability and air-sea interaction in the {S | I
+I |>000107 | |           }outh {A}tlantic {O}cean_____________________________ | I
+I | 000118 | | Journal:  Clim. Dyn.___________________________________________ | I
+I | 000120 | | Volume:   21____________                                        | I
+I | 000232 | | Number:   7-8___________                                        | I
+I | 000256 | | Pages:    559-571_______                                        | I
+I | 000320 | | Language: __________________                                    | I
+I |        | | URL:      _____________________________________________________ | I
+I |        | | E-Print:  _____________________________________________________ | I
+I |        | | Keywords: _____________________________________________________ | I
+I |        | | Note:     _____________________________________________________ | I
+I |        | |                                                                 | I
+I |        | |                                                                 | I
+I |        | |                                                                 | I
+I |        | |                                                                 | I
+I |        | |                                                                 | I
+I +--------+ +-----------------------------------------------------------------+ I
+I Add  Edit  Delete  quickSearch  Filters  Unfilter  Import  Options  Quit  Help I
++================================================================================+
+
+Alt-U (Unfilter) resets the filter status to n/a, displaying all the
+entries in the database.
+
+
+
+FILTER SCREEN
+=============
+
+
++================================================================================+
+I                                 FILTER EDITOR                                  I
+I+----------------------------------+ +-----------------------------------------+I
+I|>1: Peter Cox's recent articles<  | |AND: Author="Cox"                        |I
+I| 2: Unnamed                       | |     OR: Year=2005                       |I
+I| 3: Unnamed                       | |         Year=2004                       |I
+I|                                  | |         Year=2003                       |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I|                                  | |                                         |I
+I+----------------------------------+ +-----------------------------------------+I
+I                                                                                I
+I                                                                                I
+I      Add  Edit  Delete  quickSearch  Filters  Import  Options  Quit  Help      I
++================================================================================+
+
+Select Unfilter New Rename Edit Or And Simple Delete
+
++------------------------------------------------------------------------------+
+| #1: Peter Cox's recent articles                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+| #2: Unnamed                                                                  |
+|                                                                              |
+| OR: Author="Harrison"                                                        |
+|     Author="Prentice"                                                        |
+|                                                                              |
++------------------------------------------------------------------------------+
+| #3: Unnamed                                                                  |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
++------------------------------------------------------------------------------+
+
+
+
+
++================================================================================+
+I                                    FILTERS                                     I
+I+----+------------------------------------------------------------------+------+I
+I| #1 | Peter Cox's recent articles                                      |    4 |I
+I|    | AU=Cox & (YR=2005 | YR=2004 | YR=2003)                           |      |I
+I+----+------------------------------------------------------------------+------+I
+I| #2 | Hank Dijkstra's articles                                         |    3 |I
+I|    | AU=Dijkstra                                                      |      |I
+I+----+------------------------------------------------------------------+------+I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I|                                                                              |I
+I+------------------------------------------------------------------------------+I
+I                                                                                I
+I                                                                                I
+I                Add   Edit   Delete   Select   Combine   Cancel                 I
++================================================================================+

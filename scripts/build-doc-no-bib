@@ -1,0 +1,18 @@
+#!/bin/bash
+
+doc=$1
+
+dtxf=$doc.dtx
+texf=$doc.tex
+bibf=$doc.bib
+
+if [ \( ! -f $texf \) -o \( $dtxf -nt $texf \) ]
+then
+    echo Rebuilding TeX source...
+    sed -e 's/@cite\([^(]*\)(\([^)]*\))/\\cite\1{\2}/g' -e 's/@bibliography(\(.*\))/\\bibliography{\1}/' -e '/^@ref/d' $doc.dtx > $doc.tex
+fi
+
+pdflatex $doc.tex
+bibtex $doc
+pdflatex $doc.tex
+pdflatex $doc.tex

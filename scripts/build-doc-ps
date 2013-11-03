@@ -1,0 +1,40 @@
+#!/bin/bash
+
+doc=$1
+
+svgs=`find . -name \*.svg`
+if [ "x${svgs}" != "x" ]
+then
+    for f in $svgs ; do
+        epsf=${f/.svg/.eps}
+        if [ \( ! -f $epsf \) -o \( $f -nt $epsf \) ]
+        then
+            echo Processing $f...
+            inkscape --export-text-to-path --export-eps=$epsf $f
+        fi
+    done
+fi
+
+dtxf=$doc.dtx
+texf=$doc.tex
+bibf=$doc.bib
+
+if [ \( ! -f $texf \) -o \( ! -f $bibf \) -o \
+     \( $dtxf -nt $texf \) -o \( $dtxf -nt $bibf \) ]
+then
+    echo Rebuilding TeX source and bibliography files...
+    if build-bib $doc.dtx $doc.tex
+    then
+        echo Bibliography built OK...
+    else
+        exit 1
+    fi
+fi
+
+latex $doc.tex
+bibtex $doc
+latex $doc.tex
+latex $doc.tex
+dvips -o $doc.ps $doc.dvi
+
+rm -f $doc.aux $doc.dvi $doc.log $doc.bbl $doc.blg

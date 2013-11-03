@@ -1,0 +1,60 @@
+#!/bin/bash
+
+doc=$1
+
+pstexs=`find . -name \*.pstex`
+if [ "x${pstexs}" != "x" ]
+then
+    for f in $pstexs ; do
+        pdff=${f/.pstex/.pdf}
+        if [ \( ! -f $pdff \) -o \( $f -nt $pdff \) ]
+        then
+            echo Processing $f...
+            ps2pdf $f $pdff
+            ft=${f/.pstex/.pstex_t}
+            sed -e 's/pstex/pdf/' $ft > ${ft/.pstex_t/.pdftex_t}
+        fi
+    done
+fi
+
+svgs=`find . -name \*.svg`
+if [ "x${svgs}" != "x" ]
+then
+    for f in $svgs ; do
+        epsf=${f/.svg/.eps}
+        pdff=${f/.svg/.pdf}
+        if [ \( ! -f $pdff \) -o \( $f -nt $pdff \) ]
+        then
+            echo Processing $f...
+            inkscape --export-text-to-path --export-eps=$epsf $f
+            epstopdf --outfile=$pdff $epsf
+            /bin/rm $epsf
+        fi
+    done
+fi
+
+dtxf=$doc.dtx
+texf=$doc.tex
+bibf=$doc.bib
+
+if [ \( ! -f $texf \) -o \( ! -f $bibf \) -o \
+     \( $dtxf -nt $texf \) -o \( $dtxf -nt $bibf \) ]
+then
+    echo Rebuilding TeX source and bibliography files...
+    if build-bib $doc.dtx $doc.tex
+    then
+        echo Bibliography built OK...
+    else
+        exit 1
+    fi
+fi
+
+pdflatex $doc.tex
+bibtex $doc
+awk 'BEGIN {pr=1;} /^\\bibliography{/ {pr=0;} {if(pr)print;}' $doc.tex > $doc.beg
+awk 'BEGIN {pr=0;} /^\\bibliography{/ {pr=1;} {if(pr)print;}' $doc.tex | tail +2 > $doc.end
+cat $doc.beg $doc.bbl $doc.end > $doc.tex
+pdflatex $doc.tex
+pdflatex $doc.tex
+
+rm -f $doc.aux $doc.dvi $doc.log $doc.bbl $doc.blg $doc.beg $doc.end

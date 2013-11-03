@@ -217,6 +217,11 @@ CREATE TABLE journal_abbrevs (
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
 
+/* Initial document ID. */
+
+INSERT INTO doc_id VALUES ('000001');
+
+
 /* Define field types. */
 
 INSERT INTO field_types VALUES ('AD', 'address',      '~*');

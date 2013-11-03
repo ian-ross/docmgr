@@ -11,3 +11,5 @@
 *.lai
 *.la
 *.a
+/src/build-bib/build-bib
+/src/docmgr/docmgr

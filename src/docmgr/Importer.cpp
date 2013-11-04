@@ -60,12 +60,10 @@ Importer::Importer(DocMgr::Connection &db, string file_name) :
     _failure_reason = string("Couldn't open import file ") + _file_name;
     return;
   }
-  char buff_chars[1024];
-  istr.getline(buff_chars, 1024);
-  string header1 = buff_chars;
+  string header1, header2;
+  getline(istr, header1);
   while (!isprint(header1[0])) header1 = header1.substr(1);
-  istr.getline(buff_chars, 1024);
-  string header2 = buff_chars;
+  getline(istr, header2);
   if (header1.substr(0, 3) != "FN " || header2 != "VR 1.0") {
     _valid = false;
     _failure_reason = "Import file isn't in ISI V1.0 format";
@@ -75,8 +73,8 @@ Importer::Importer(DocMgr::Connection &db, string file_name) :
   map<string, string> fields;
   string last_tag;
   while (!istr.eof()) {
-    istr.getline(buff_chars, 1024);
-    string buff = buff_chars;
+    string buff;
+    getline(istr, buff);
     if (buff.size() == 0 || buff == "EF") continue;
     string tag = buff.substr(0, 2);
     string val = buff.size() > 3 ? buff.substr(3) : "";

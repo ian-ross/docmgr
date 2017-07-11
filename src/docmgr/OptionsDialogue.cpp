@@ -103,6 +103,7 @@ void OptionsDialogue::run(void)
 
   bool show_deleted = _config->show_deleted();
   string paper_dir = _config->paper_directory();
+  string default_import_file = _config->default_import_file();
   string view_command = _config->view_command();
 
   int row = 2;
@@ -116,6 +117,9 @@ void OptionsDialogue::run(void)
   writestr(3, row, "Paper directory:");
   TextField paper_dir_field(_x + 3 + 18, _y + row++,
                             _w - 18 - 6, paper_dir);
+  writestr(3, row, "Import file:");
+  TextField default_import_file_field(_x + 3 + 18, _y + row++,
+                                      _w - 18 - 6, default_import_file);
   writestr(3, row, "PDF view command:");
   TextField view_command_field(_x + 3 + 18, _y + row++,
                                _w - 18 - 6, view_command);
@@ -123,6 +127,7 @@ void OptionsDialogue::run(void)
   _field_list.clear();
   _field_list.push_back(&show_deleted_field);
   _field_list.push_back(&paper_dir_field);
+  _field_list.push_back(&default_import_file_field);
   _field_list.push_back(&view_command_field);
   _curr_field = _field_list.begin();
   (*_curr_field)->focus(true);
@@ -147,6 +152,7 @@ void OptionsDialogue::run(void)
     string tst = show_deleted_field.result();
     _config->set_show_deleted(tst == "Yes");
     _config->set_paper_directory(paper_dir);
+    _config->set_default_import_file(default_import_file);
     _config->set_view_command(view_command);
     _config->save();
   }

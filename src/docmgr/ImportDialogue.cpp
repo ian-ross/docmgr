@@ -95,7 +95,7 @@ bool ImportDialogue::process_key(int ch)
 }
 
 
-void ImportDialogue::run(void)
+void ImportDialogue::run(string default_import_file)
 {
   clear();
   frame();
@@ -110,7 +110,7 @@ void ImportDialogue::run(void)
   writestr((_w - menu_str.size()) / 2 + 9, _h - 2, "A", A_BOLD);
 
   curs_set(1);
-  _file_name = "~/savedrecs.txt";
+  _file_name = default_import_file;
   writestr(3, 2, "Import file:");
   _field = new TextField(_x + 16, _y + 2, _w - 20, _file_name, "/");
   _field->focus(true);

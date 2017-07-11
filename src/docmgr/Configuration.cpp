@@ -39,7 +39,8 @@ using namespace std;
 
 Configuration::Configuration(string path) :
   _path(path), _show_deleted(false),
- _paper_directory("/papers"), _view_command("acroread %s")
+  _paper_directory("/papers"), _default_import_file("~/savedrecs.txt"),
+  _view_command("acroread %s")
 {
   if (_path[0] == '~') {
     string home = getenv("HOME");
@@ -82,6 +83,7 @@ void Configuration::reread(void)
         throw DocMgr::Exception(DocMgr::Exception::MISC,
                                 "Bad boolean value in config. file");
     } else if (kw == "PAPER_DIRECTORY") _paper_directory = val;
+    else if (kw == "DEFAULT_IMPORT_FILE") _default_import_file = val;
     else if (kw == "VIEW_COMMAND") _view_command = val;
     else if (kw.substr(0, 6) == "FILTER" &&
              kw.substr(kw.size() - 5, 5) == "_NAME") {
@@ -155,6 +157,7 @@ void Configuration::save(void)
 
   ostr << "SHOW_DELETED: " << (_show_deleted ? "true" : "false") << endl;
   ostr << "PAPER_DIRECTORY: " << _paper_directory << endl;
+  ostr << "DEFAULT_IMPORT_FILE: " << _default_import_file << endl;
   if (_view_command != "") ostr << "VIEW_COMMAND: " << _view_command << endl;
 
   for (int idx = 0; idx < _filter_names.size(); ++idx) {

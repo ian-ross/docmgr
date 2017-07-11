@@ -107,43 +107,6 @@ bool DocID::valid(int poss_id)
 }
 
 
-bool DocID::valid_range(string poss_range)
-{
-  string::size_type dash = poss_range.find('-');
-  if (dash == string::npos) return false;
-  string i1 = poss_range.substr(0, dash);
-  string i2 = poss_range.substr(dash + 1);
-  while (i1[0] == ' ') i1.erase(0, 1);
-  while (i1[i1.size() - 1] == ' ') i1.erase(i1.size() - 1);
-  while (i2[0] == ' ') i2.erase(0, 1);
-  while (i2[i2.size() - 1] == ' ') i2.erase(i2.size() - 1);
-  return valid(i1) && valid(i2);
-}
-
-DocID DocID::range_first(string range)
-{
-  if (!valid_range(range))
-    throw Exception(Exception::INVALID_DOCID,
-                    string("Invalid ID range: '") + range + "'");
-  string::size_type dash = range.find('-');
-  string id = range.substr(0, dash);
-  while (id[0] == ' ') id.erase(0, 1);
-  while (id[id.size() - 1] == ' ') id.erase(id.size() - 1);
-  return DocID(id);
-}
-
-DocID DocID::range_second(string range)
-{
-  if (!valid_range(range))
-    throw Exception(Exception::INVALID_DOCID,
-                    string("Invalid ID range: '") + range + "'");
-  string::size_type dash = range.find('-');
-  string id = range.substr(dash + 1);
-  while (id[0] == ' ') id.erase(0, 1);
-  while (id[id.size() - 1] == ' ') id.erase(id.size() - 1);
-  return DocID(id);
-}
-
 DocID::operator string(void) const
 {
   char buff[7];
@@ -611,7 +574,7 @@ bool DocRecord::mandatory_check(string mandatory,
 DocRecord *DocRecord::isi_import(Connection &db, map<string, string> &fields)
 {
   string isi_article_type = fields["PT"];
-  if (isi_article_type != "J" && isi_article_type != "S")
+  if (isi_article_type != "J" && isi_article_type != "S" && isi_article_type != "B")
     throw Exception(Exception::MISC,
                     string("Don't know how to import ISI article type '") +
                     isi_article_type + "': talk to Ian!");

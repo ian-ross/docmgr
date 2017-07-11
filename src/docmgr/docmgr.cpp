@@ -144,7 +144,7 @@ int main(void)
         if (exc.type() != DocMgr::Exception::DB_ERROR) throw;
         failure_msg = exc.msg();
       }
-        
+
       if (!conn)
         done = !run_db_failed_screen(failure_msg);
       else {
@@ -285,7 +285,7 @@ static bool run_db_good_screen(DocMgr::Connection *conn)
     try {
       bool quick_search_active = false;
       bool db_edits = false;
-      
+
       // Database connection is good.
       conn->set_view_deleted(config->show_deleted());
 
@@ -513,7 +513,7 @@ static bool run_db_good_screen(DocMgr::Connection *conn)
 
           case IMPORT_ACTION:
             // Run the import dialogue.
-            import_dialogue.run();
+            import_dialogue.run(config->default_import_file());
             id_list->refresh();
             id_list->display();
             view_form.display();

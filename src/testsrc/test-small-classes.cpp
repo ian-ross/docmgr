@@ -47,12 +47,6 @@ int main(void)
     assert(i4 != i1);
     assert(i4 >= i1);
     assert(!(i4 < i1));
-    assert(DocID::valid_range("1-12"));
-    assert(!DocID::valid_range("112"));
-    DocID first = DocID::range_first("1-12");
-    DocID second = DocID::range_second("1-12");
-    assert(first == "000001");
-    assert(second == "000012");
 
 
     // FieldType tests.

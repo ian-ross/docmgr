@@ -47,7 +47,7 @@ public:
   virtual ~ImportDialogue() { }
 
   virtual bool process_key(int ch);
-  void run(void);
+  void run(string default_import_file);
 
 private:
 

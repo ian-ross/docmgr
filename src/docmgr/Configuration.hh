@@ -43,6 +43,7 @@ public:
 
   bool show_deleted(void) const { return _show_deleted; }
   string paper_directory(void) const { return _paper_directory; }
+  string default_import_file(void) const { return _default_import_file; }
   string view_command(void) const { return _view_command; }
 
   int filter_count(void) const { return _filter_names.size(); }
@@ -53,6 +54,7 @@ public:
 
   void set_show_deleted(bool val) { _show_deleted = val; }
   void set_paper_directory(string val) { _paper_directory = val; }
+  void set_default_import_file(string val) { _default_import_file = val; }
   void set_view_command(string val) { _view_command = val; }
 
   void add_filter(string name, string def,
@@ -69,6 +71,7 @@ private:
 
   bool _show_deleted;
   string _paper_directory;
+  string _default_import_file;
   string _view_command;
 
   vector<string> _filter_names;

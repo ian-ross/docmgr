@@ -62,10 +62,6 @@ namespace DocMgr {
     static bool valid(string poss_id);
     static bool valid(int poss_id);
 
-    static bool valid_range(string poss_range);
-    static DocID range_first(string range);
-    static DocID range_second(string range);
-
     operator int(void) const { return _id; }
     operator string(void) const;
 
@@ -217,7 +213,7 @@ namespace DocMgr {
 
   class Exception {
   public:
-    
+
     enum ExcType { MISC,
                    INVALID_HOLDING, INVALID_STATUS,
                    INVALID_DOCID, INVALID_DATE,
